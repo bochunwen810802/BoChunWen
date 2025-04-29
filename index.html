@@ -484,14 +484,13 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .portfolio-img {
-            height: 200px;
-            background: var(--gradient-blue);
+        .portfolio-icon {
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: white;
+            color: var(--primary-blue);
+            height: 120px;
         }
         
         .portfolio-content {
@@ -851,6 +850,149 @@
                 gap: 1rem;
             }
         }
+        
+        .portfolio-detail-btn {
+            margin-top: 1.2rem;
+            background: var(--gradient-blue);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .portfolio-detail-btn:hover {
+            background: var(--primary-blue);
+        }
+        
+        .portfolio-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .portfolio-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90vw;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            animation: fadeInModal 0.3s;
+        }
+        
+        @keyframes fadeInModal { from { opacity: 0; transform: scale(0.95);} to { opacity: 1; transform: scale(1);} }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--medium-gray);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .close-modal:hover { color: var(--primary-blue); }
+        
+        .modal-carousel {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .modal-img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: none;
+        }
+        
+        .modal-img.show { display: block; }
+        
+        .modal-desc { color: var(--text-dark); }
+        
+        .timeline-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 40px;
+            border-left: 3px solid var(--primary-blue);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -13px;
+            top: 8px;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient-blue);
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px rgba(37,99,235,0.15);
+        }
+        .timeline-date {
+            font-size: 1rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            margin-left: 1.5rem;
+        }
+        .timeline-content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-left: 1.5rem;
+        }
+        .timeline-content .company {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 0.3rem;
+        }
+        .timeline-content .position {
+            font-size: 1.05rem;
+            color: var(--medium-gray);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .timeline-content ul {
+            padding-left: 1.2rem;
+            color: var(--text-light);
+        }
+        .timeline-content li {
+            margin-bottom: 0.5rem;
+            list-style: disc;
+        }
+        @media (max-width: 600px) {
+            .timeline {
+                padding-left: 20px;
+            }
+            .timeline-content {
+                padding: 1rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -864,9 +1006,9 @@
             <a href="#hero">首頁</a>
             <a href="#about">關於我</a>
             <a href="#skills">技能</a>
-            <a href="#experience">經驗</a>
+            <a href="#experience">工作經歷</a>
             <a href="#portfolio">作品集</a>
-            <a href="#featured-projects">特色專案</a>
+            <a href="#featured-projects">競賽獲獎</a>
             <a href="#education">學歷</a>
             <a href="#contact">聯絡我</a>
         </div>
@@ -916,7 +1058,7 @@
         <h2 class="section-title fade-in">關於我</h2>
         <div class="about-container">
             <div class="about-image fade-in">
-                <img src="/api/placeholder/400/400" alt="Bo-Chun Wen">
+                <img src="images/profile.jpg" alt="Bo-Chun Wen" style="width:100%;object-fit:cover;">
             </div>
             <div class="about-content fade-in">
                 <p class="about-text">我是溫柏淳，一位結合 AI、數據技術、系統分析與使用者經驗設計的產品規劃與專案管理師。</p>
@@ -948,49 +1090,46 @@
     <!-- Experience Section -->
     <section id="experience">
         <h2 class="section-title fade-in">工作經驗</h2>
-        <div class="experience-container">
-            <div class="experience-item fade-in">
-                <div class="experience-header">
-                    <div class="company">國泰金融控股股份有限公司</div>
-                    <div class="period">2022/7 – 至今</div>
+        <div class="timeline-container fade-in">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2022/7 – 至今</div>
+                    <div class="timeline-content">
+                        <div class="company">國泰金融控股股份有限公司</div>
+                        <div class="position">數據技術專案管理師</div>
+                        <ul>
+                            <li>主導AWS平台MLOps運行專案</li>
+                            <li>建置GCP數據平台（資料市集、視覺化、模型訓練）</li>
+                            <li>推動GenAI應用於風控系統開發</li>
+                            <li>擔任AI團隊專案經理，推動敏捷學習與交付</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="position">數據技術專案管理師</div>
-                <div class="experience-details">
-                    <ul>
-                        <li>主導AWS平台MLOps運行專案</li>
-                        <li>建置GCP數據平台（資料市集、視覺化、模型訓練）</li>
-                        <li>推動GenAI應用於風控系統開發</li>
-                        <li>擔任AI團隊專案經理，推動敏捷學習與交付</li>
-                    </ul>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2015 – 2022</div>
+                    <div class="timeline-content">
+                        <div class="company">軟體專案經理 / 系統分析師</div>
+                        <div class="position">多領域專案經理</div>
+                        <ul>
+                            <li>執行超過30項跨域專案（醫療、政府、製造、IoT）</li>
+                            <li>負責系統流程設計、團隊協作與客戶需求管理</li>
+                            <li>成功將多個原型產品推進至正式商用化</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="experience-item fade-in">
-                <div class="experience-header">
-                    <div class="company">軟體專案經理 / 系統分析師</div>
-                    <div class="period">2015 – 2022</div>
-                </div>
-                <div class="position">多領域專案經理</div>
-                <div class="experience-details">
-                    <ul>
-                        <li>執行超過30項跨域專案（醫療、政府、製造、IoT）</li>
-                        <li>負責系統流程設計、團隊協作與客戶需求管理</li>
-                        <li>成功將多個原型產品推進至正式商用化</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="experience-item fade-in">
-                <div class="experience-header">
-                    <div class="company">簡報即戰力社群</div>
-                    <div class="period">創辦人</div>
-                </div>
-                <div class="position">社群創辦人</div>
-                <div class="experience-details">
-                    <ul>
-                        <li>創立專注於簡報設計技巧分享的社群，累積萬人粉絲</li>
-                        <li>受邀多場企業、學校進行簡報與提案訓練</li>
-                    </ul>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">創辦人</div>
+                    <div class="timeline-content">
+                        <div class="company">簡報即戰力社群</div>
+                        <div class="position">社群創辦人</div>
+                        <ul>
+                            <li>創立專注於簡報設計技巧分享的社群，累積萬人粉絲</li>
+                            <li>受邀多場企業、學校進行簡報與提案訓練</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1010,67 +1149,58 @@
             
             <div class="portfolio-grid">
                 <div class="portfolio-item fade-in" data-category="medical">
-                    <div class="portfolio-img">
+                    <div class="portfolio-icon">
                         <i class="fas fa-hospital"></i>
                     </div>
                     <div class="portfolio-content">
                         <div class="portfolio-category">醫療</div>
                         <h3 class="portfolio-title">智慧病房解決方案</h3>
-                        <div class="portfolio-role">產品經理</div>
-                        <div class="portfolio-desc">整合智慧床墊、智慧照明和病患監測系統，優化護理工作流程。</div>
-                        <div class="portfolio-result">成果：5家醫學中心導入，提升護理效率</div>
+                        <div class="portfolio-desc">整合智慧床墊、照明與監測，優化護理流程。</div>
+                        <button class="portfolio-detail-btn" data-id="smartward">查看更多</button>
                     </div>
                 </div>
-                
                 <div class="portfolio-item fade-in" data-category="medical">
-                    <div class="portfolio-img">
+                    <div class="portfolio-icon">
                         <i class="fas fa-stethoscope"></i>
                     </div>
                     <div class="portfolio-content">
                         <div class="portfolio-category">醫療</div>
                         <h3 class="portfolio-title">TeleMed遠距醫療平台</h3>
-                        <div class="portfolio-role">產品經理</div>
-                        <div class="portfolio-desc">開發視訊問診、遠距監測和藥物管理系統，為偏遠地區提供醫療服務。</div>
-                        <div class="portfolio-result">成果：3家醫院成功部署</div>
+                        <div class="portfolio-desc">開發視訊問診、遠距監測與藥物管理，服務偏遠地區。</div>
+                        <button class="portfolio-detail-btn" data-id="telemed">查看更多</button>
                     </div>
                 </div>
-                
                 <div class="portfolio-item fade-in" data-category="government">
-                    <div class="portfolio-img">
+                    <div class="portfolio-icon">
                         <i class="fas fa-leaf"></i>
                     </div>
                     <div class="portfolio-content">
                         <div class="portfolio-category">政府</div>
                         <h3 class="portfolio-title">環保法令自動化判釋系統</h3>
-                        <div class="portfolio-role">系統分析師</div>
-                        <div class="portfolio-desc">使用NLP技術自動解析和分類環保法規，加速審核流程。</div>
-                        <div class="portfolio-result">成果：審核速度提升70%</div>
+                        <div class="portfolio-desc">NLP自動解析法規，加速審核流程。</div>
+                        <button class="portfolio-detail-btn" data-id="envlaw">查看更多</button>
                     </div>
                 </div>
-                
                 <div class="portfolio-item fade-in" data-category="iot">
-                    <div class="portfolio-img">
+                    <div class="portfolio-icon">
                         <i class="fas fa-bicycle"></i>
                     </div>
                     <div class="portfolio-content">
                         <div class="portfolio-category">IoT</div>
                         <h3 class="portfolio-title">自行車揪團平台</h3>
-                        <div class="portfolio-role">系統分析師</div>
-                        <div class="portfolio-desc">結合GPS定位和社群功能，打造即時自行車揪團與路線分享系統。</div>
-                        <div class="portfolio-result">成果：榮獲2018智慧交通資料應用組銅獎</div>
+                        <div class="portfolio-desc">GPS定位＋社群，打造即時揪團與路線分享。</div>
+                        <button class="portfolio-detail-btn" data-id="bike">查看更多</button>
                     </div>
                 </div>
-                
                 <div class="portfolio-item fade-in" data-category="manufacturing">
-                    <div class="portfolio-img">
+                    <div class="portfolio-icon">
                         <i class="fas fa-industry"></i>
                     </div>
                     <div class="portfolio-content">
                         <div class="portfolio-category">製造</div>
                         <h3 class="portfolio-title">智慧製造AI調參系統</h3>
-                        <div class="portfolio-role">系統分析師</div>
-                        <div class="portfolio-desc">應用機器學習算法優化製造參數，提升生產效率和產品品質。</div>
-                        <div class="portfolio-result">成果：提升製程良率與穩定性</div>
+                        <div class="portfolio-desc">機器學習優化製程參數，提升良率與穩定性。</div>
+                        <button class="portfolio-detail-btn" data-id="ai-mfg">查看更多</button>
                     </div>
                 </div>
             </div>
@@ -1079,7 +1209,7 @@
     
     <!-- Featured Projects Section -->
     <section id="featured-projects">
-        <h2 class="section-title fade-in">特色專案</h2>
+        <h2 class="section-title fade-in">競賽獲獎</h2>
         <div class="projects-carousel fade-in">
             <div class="carousel-container" id="carousel">
                 <div class="project-card">
@@ -1392,6 +1522,26 @@
             indicator.addEventListener('click', () => {
                 currentIndex = i;
                 updateCarousel();
+            });
+        });
+        
+        // Modal互動
+        const detailBtns = document.querySelectorAll('.portfolio-detail-btn');
+        const modals = document.querySelectorAll('.portfolio-modal');
+        detailBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                document.getElementById('modal-' + id).classList.add('active');
+            });
+        });
+        document.querySelectorAll('.close-modal').forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                closeBtn.closest('.portfolio-modal').classList.remove('active');
+            });
+        });
+        window.addEventListener('click', e => {
+            modals.forEach(modal => {
+                if (e.target === modal) modal.classList.remove('active');
             });
         });
     </script>
