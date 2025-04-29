@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>溫柏淳 - AI & Data Product Strategist / Project Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --tech-blue: #0080ff;
+            --dark-blue: #001233;
+            --light-blue: #3aa0ff;
+            --accent-blue: #00d4ff;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+            --card-bg: rgba(10, 25, 47, 0.7);
+            --gradient-blue: linear-gradient(45deg, #0080ff, #00d4ff);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #000;
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+        
+        /* Background Animation */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--tech-blue), transparent);
+            animation: flow 8s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes flow {
+            0% {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(5000%);
+                opacity: 0;
+            }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--tech-blue);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--tech-blue);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 5rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: var(--gradient-blue);
+            color: #fff;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        h1 span {
+            color: var(--tech-blue);
+        }
+        
+        .subtitle {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-blue);
+        }
+        
+        .hero-desc {
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .hashtag {
+            color: var(--accent-blue);
+            font-size: 1rem;
+        }
+        
+        .stats-container {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--tech-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 128, 255, 0.3);
+        }
+        
+        /* About Section */
+        section {
+            padding: 6rem 5%;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-blue);
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--tech-blue);
+            border-radius: 10px;
+            z-index: -1;
+        }
+        
+        .about-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .about-text {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+        
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--light-blue);
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-name span {
+            font-size: 1rem;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-blue);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-list li::before {
+            content: '▹';
+            color: var(--tech-blue);
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+        }
+        
+        /* Experience Section */
+        .experience-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .experience-item {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .company {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+        
+        .period {
+            color: var(--tech-blue);
+            font-weight: 500;
+        }
+        
+        .position {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--light-blue);
+        }
+        
+        .experience-details ul {
+            list-style-type: none;
+        }
+        
+        .experience-details li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .experience-details li::before {
+            content: '▹';
+            color: var(--tech-blue);
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--tech-blue);
+            color: var(--tech-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gradient-blue);
+            color: white;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .portfolio-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 128, 255, 0.2);
+        }
+        
+        .portfolio-img {
+            height: 200px;
+            background-color: #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--tech-blue);
+        }
+        
+        .portfolio-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .portfolio-category {
+            font-size: 0.9rem;
+            color: var(--tech-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .portfolio-role {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--light-blue);
+        }
+        
+        .portfolio-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .portfolio-result {
+            margin-top: auto;
+            font-size: 0.95rem;
+            color: #b3e0ff;
+            font-style: italic;
+        }
+        
+        /* Featured Projects Section */
+        #featured-projects {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 10, 30, 0.8));
+            padding: 8rem 5%;
+        }
+        
+        .projects-carousel {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            padding: 0 1rem;
+        }
+        
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card {
+            flex: 0 0 100%;
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-banner {
+            height: 250px;
+            background-image: linear-gradient(45deg, #001233, #003366);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .project-icon {
+            font-size: 5rem;
+            color: var(--tech-blue);
+        }
+        
+        .award-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .project-details {
+            padding: 2.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .meta-item i {
+            color: var(--tech-blue);
+        }
+        
+        .project-description {
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .tech-highlights {
+            margin-bottom: 2rem;
+        }
+        
+        .tech-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--light-blue);
+        }
+        
+        .tech-list {
+            list-style-type: none;
+        }
+        
+        .tech-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .tech-list li::before {
+            content: '▹';
+            color: var(--tech-blue);
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+        }
+        
+        .project-impact {
+            margin-bottom: 2rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 128, 255, 0.1);
+            color: var(--tech-blue);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .project-link:hover {
+            background: var(--tech-blue);
+            color: white;
+        }
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--tech-blue);
+            color: var(--tech-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: var(--tech-blue);
+            color: white;
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .indicator.active {
+            background: var(--tech-blue);
+            transform: scale(1.2);
+        }
+        
+        /* Education Section */
+        .education-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .education-item {
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .education-item:last-child {
+            border-bottom: none;
+        }
+        
+        .education-logo {
+            flex: 0 0 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--tech-blue);
+        }
+        
+        .education-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .education-school {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-degree {
+            font-size: 1.2rem;
+            color: var(--light-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-period {
+            font-size: 1rem;
+            color: var(--tech-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .education-more {
+            margin-top: 1rem;
+        }
+        
+        .education-more p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .education-more i {
+            color: var(--tech-blue);
+        }
+        
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            padding: 8rem 5% 6rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
+        
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-text {
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            background: var(--tech-blue);
+            transform: translateY(-3px);
+        }
+        
+        .contact-link i {
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Mobile Responsive */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                padding: 1rem 0;
+                flex-direction: column;
+                gap: 0;
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                padding: 1rem 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .stats-container {
+                gap: 2rem;
+                justify-content: space-around;
+            }
+            
+            .project-details {
+                padding: 1.5rem;
+            }
+            
+            .project-meta {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="background" id="background"></div>
+    
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">Bo-Chun Wen</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#hero">首頁</a>
+            <a href="#about">關於我</a>
+            <a href="#skills">技能</a>
+            <a href="#experience">經驗</a>
+            <a href="#portfolio">作品集</a>
+            <a href="#featured-projects">特色專案</a>
+            <a href="#education">學歷</a>
+            <a href="#contact">聯絡我</a>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="tag fade-in">AI & Data Specialist</div>
+            <h1 class="fade-in">嗨，我是 <span>溫柏淳</span></h1>
+            <div class="subtitle fade-in">AI & Data Product Strategist / Project Manager</div>
+            <p class="hero-desc fade-in">結合AI技術、數據分析、系統分析與UX設計，打造高效能的智慧化解決方案。超過8年專案管理與產品設計經驗，具備敏捷推進、跨域溝通、快速原型開發與數據應用落地能力。</p>
+            
+            <div class="tags fade-in">
+                <span class="hashtag">#AI</span>
+                <span class="hashtag">#Data</span>
+                <span class="hashtag">#SystemAnalysis</span>
+                <span class="hashtag">#UXDesign</span>
+                <span class="hashtag">#ProjectManagement</span>
+                <span class="hashtag">#VibeCoding</span>
+            </div>
+            
+            <div class="stats-container fade-in">
+                <div class="stat-item">
+                    <div class="stat-number" id="yearsCounter">8+</div>
+                    <div class="stat-label">年專案經驗</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="projectsCounter">30+</div>
+                    <div class="stat-label">專案完成</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="awardsCounter">2</div>
+                    <div class="stat-label">交通領域得獎</div>
+                </div>
+            </div>
+            
+            <a href="#contact" class="cta-button fade-in">與我聯繫</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title fade-in">關於我</h2>
+        <div class="about-container">
+            <div class="about-image fade-in">
+                <img src="/api/placeholder/400/400" alt="Bo-Chun Wen">
+            </div>
+            <div class="about-content fade-in">
+                <p class="about-text">我是溫柏淳，一位結合 AI、數據技術、系統分析與使用者經驗設計的產品規劃與專案管理師。</p>
+                <p class="about-text">具備醫療、金融、政府、製造等多領域跨界實戰經驗，專精於將前沿技術轉化為實際可落地的產品與系統解決方案。</p>
+                <p class="about-text">在專案推進中強調以敏捷思維結合Vibe Coding快速迭代，並致力於提升團隊效率、客戶滿意度與產品影響力。</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title fade-in">技能專長</h2>
+        <div class="skills-container">
+            <div class="skill-category fade-in">
+                <h3>專案管理與團隊溝通</h3>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>產品規格文件撰寫</span>
+                        <span>94%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="94%"></div>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title fade-in">工作經驗</h2>
+        <div class="experience-container">
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div class="company">國泰金融控股股份有限公司</div>
+                    <div class="period">2022/7 – 至今</div>
+                </div>
+                <div class="position">數據技術專案管理師</div>
+                <div class="experience-details">
+                    <ul>
+                        <li>主導AWS平台MLOps運行專案</li>
+                        <li>建置GCP數據平台（資料市集、視覺化、模型訓練）</li>
+                        <li>推動GenAI應用於風控系統開發</li>
+                        <li>擔任AI團隊專案經理，推動敏捷學習與交付</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div class="company">軟體專案經理 / 系統分析師</div>
+                    <div class="period">2015 – 2022</div>
+                </div>
+                <div class="position">多領域專案經理</div>
+                <div class="experience-details">
+                    <ul>
+                        <li>執行超過30項跨域專案（醫療、政府、製造、IoT）</li>
+                        <li>負責系統流程設計、團隊協作與客戶需求管理</li>
+                        <li>成功將多個原型產品推進至正式商用化</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div class="company">簡報即戰力社群</div>
+                    <div class="period">創辦人</div>
+                </div>
+                <div class="position">社群創辦人</div>
+                <div class="experience-details">
+                    <ul>
+                        <li>創立專注於簡報設計技巧分享的社群，累積萬人粉絲</li>
+                        <li>受邀多場企業、學校進行簡報與提案訓練</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title fade-in">作品集</h2>
+        <div class="portfolio-container">
+            <div class="portfolio-filters fade-in">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="medical">醫療</button>
+                <button class="filter-btn" data-filter="government">政府</button>
+                <button class="filter-btn" data-filter="iot">IoT</button>
+                <button class="filter-btn" data-filter="manufacturing">製造</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in" data-category="medical">
+                    <div class="portfolio-img">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">醫療</div>
+                        <h3 class="portfolio-title">智慧病房解決方案</h3>
+                        <div class="portfolio-role">產品經理</div>
+                        <div class="portfolio-desc">整合智慧床墊、智慧照明和病患監測系統，優化護理工作流程。</div>
+                        <div class="portfolio-result">成果：5家醫學中心導入，提升護理效率</div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="medical">
+                    <div class="portfolio-img">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">醫療</div>
+                        <h3 class="portfolio-title">TeleMed遠距醫療平台</h3>
+                        <div class="portfolio-role">產品經理</div>
+                        <div class="portfolio-desc">開發視訊問診、遠距監測和藥物管理系統，為偏遠地區提供醫療服務。</div>
+                        <div class="portfolio-result">成果：3家醫院成功部署</div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="government">
+                    <div class="portfolio-img">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">政府</div>
+                        <h3 class="portfolio-title">環保法令自動化判釋系統</h3>
+                        <div class="portfolio-role">系統分析師</div>
+                        <div class="portfolio-desc">使用NLP技術自動解析和分類環保法規，加速審核流程。</div>
+                        <div class="portfolio-result">成果：審核速度提升70%</div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="iot">
+                    <div class="portfolio-img">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">IoT</div>
+                        <h3 class="portfolio-title">自行車揪團平台</h3>
+                        <div class="portfolio-role">系統分析師</div>
+                        <div class="portfolio-desc">結合GPS定位和社群功能，打造即時自行車揪團與路線分享系統。</div>
+                        <div class="portfolio-result">成果：榮獲2018智慧交通資料應用組銅獎</div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in" data-category="manufacturing">
+                    <div class="portfolio-img">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-category">製造</div>
+                        <h3 class="portfolio-title">智慧製造AI調參系統</h3>
+                        <div class="portfolio-role">系統分析師</div>
+                        <div class="portfolio-desc">應用機器學習算法優化製造參數，提升生產效率和產品品質。</div>
+                        <div class="portfolio-result">成果：提升製程良率與穩定性</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Projects Section -->
+    <section id="featured-projects">
+        <h2 class="section-title fade-in">特色專案</h2>
+        <div class="projects-carousel fade-in">
+            <div class="carousel-container" id="carousel">
+                <div class="project-card">
+                    <div class="project-banner">
+                        <i class="fas fa-car-crash project-icon"></i>
+                        <div class="award-badge">交通部公路局傑出獎</div>
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">AI即時路況解碼與智慧緩解時間預測系統</h3>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>傑出獎（第二名）</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>125組團隊中脫穎而出</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>2025年4月26日</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            交通部公路局為打造以人為本的用路環境，進一步透過公民參與及公私協力，帶動公路局服務變革加速數位轉型，提供民眾更優質的用路體驗及便民簡政服務，以「公路新思維，數據創未來」為發想主軸，辦理第一屆資料創新應用競賽。本次競賽總獎金高達新臺幣50萬元，吸引125組團隊、共計467位參賽者角逐，最後由「Geo-AI路徑好空氣」團隊及「國立臺灣師範大學」團隊脫穎而出，分別奪得社會組及學生組冠軍。
+                        </div>
+                        <div class="tech-highlights">
+                            <h4 class="tech-title">技術亮點：</h4>
+                            <ul class="tech-list">
+                                <li>LLM自然語言解析事故資料</li>
+                                <li>LSTM、XGBoost預測事故處理時間</li>
+                                <li>RAG智能問答系統建置</li>
+                            </ul>
+                        </div>
+                        <div class="project-impact">
+                            <h4 class="tech-title">專案影響：</h4>
+                            <ul class="tech-list">
+                                <li>提升交通管理即時應變效率</li>
+                                <li>增進駕駛者安全與資訊透明</li>
+                                <li>開創通報資料決策支援新模式</li>
+                            </ul>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.cna.com.tw/postwrite/chi/400151" class="project-link" target="_blank">
+                                <i class="fas fa-link"></i>
+                                <span>新聞稿連結</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-banner">
+                        <i class="fas fa-road project-icon"></i>
+                        <div class="award-badge">高速公路局優勝</div>
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">國道智慧交通管理與壅塞預測系統</h3>
+                        <div class="project-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>優勝獎</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>精準預測流量與壅塞</span>
+                            </div>
+                        </div>
+                        <div class="project-description">
+                            建立國道交通流量預測系統，整合多源數據進行壅塞預警，提供替代路線推薦。
+                        </div>
+                        <div class="tech-highlights">
+                            <h4 class="tech-title">技術亮點：</h4>
+                            <ul class="tech-list">
+                                <li>STGCN、LSTM預測交通流量與壅塞</li>
+                                <li>LightGBM事故排解時間預測</li>
+                                <li>整合事故、施工、氣象資料，提供替代路線建議</li>
+                            </ul>
+                        </div>
+                        <div class="project-impact">
+                            <h4 class="tech-title">專案影響：</h4>
+                            <ul class="tech-list">
+                                <li>優化國道資源調度</li>
+                                <li>提升駕駛者行車體驗與決策效率</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-nav">
+                <button class="nav-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel-indicators" id="indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title fade-in">學歷</h2>
+        <div class="education-container">
+            <div class="education-item fade-in">
+                <div class="education-logo">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="education-details">
+                    <div class="education-school">國立中正大學</div>
+                    <div class="education-degree">資訊管理研究所</div>
+                    <div class="education-period">2017 – 2019</div>
+                    <div class="education-more">
+                        <p><i class="fas fa-award"></i> GPA 4.18 / 4.3（系排名第6）</p>
+                        <p><i class="fas fa-file-alt"></i> 論文：GIS結合機器學習於YouBike租賃站缺車預測</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="education-item fade-in">
+                <div class="education-logo">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="education-details">
+                    <div class="education-school">逢甲大學</div>
+                    <div class="education-degree">都市計畫與空間資訊學系 空間資訊組</div>
+                    <div class="education-period">2010 – 2014</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title fade-in">聯絡我</h2>
+        <div class="contact-container fade-in">
+            <p class="contact-text">如果您對我的專業能力和專案經驗感興趣，或者想要討論相關合作機會，歡迎隨時與我聯繫！</p>
+            <div class="contact-links">
+                <a href="mailto:bochunwen@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>bochunwen@gmail.com</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="#" class="contact-link">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>台中市</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">© 2025 溫柏淳 Bo-Chun Wen | AI & Data Product Strategist / Project Manager</p>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Create dynamic background lines
+        const background = document.getElementById('background');
+        for (let i = 0; i < 20; i++) {
+            const line = document.createElement('div');
+            line.classList.add('line');
+            line.style.top = Math.random() * 100 + '%';
+            line.style.left = Math.random() * 100 + '%';
+            line.style.width = Math.random() * 30 + 10 + '%';
+            line.style.animationDelay = Math.random() * 5 + 's';
+            background.appendChild(line);
+        }
+        
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Fade in animations on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Initialize skill progress bars
+        const skillBars = document.querySelectorAll('.skill-progress');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width;
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        skillBars.forEach(bar => {
+            skillObserver.observe(bar);
+        });
+        
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target > 30 ? 1 : (target > 10 ? 0.5 : 0.1);
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 30);
+        }
+        
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.id === 'yearsCounter') {
+                        animateCounter(entry.target, 8);
+                    } else if (entry.target.id === 'projectsCounter') {
+                        animateCounter(entry.target, 30);
+                    } else if (entry.target.id === 'awardsCounter') {
+                        animateCounter(entry.target, 2);
+                    }
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        document.querySelectorAll('.stat-number').forEach(stat => {
+            statObserver.observe(stat);
+        });
+        
+        // Portfolio filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Featured Projects Carousel
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentIndex = 0;
+        
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentIndex);
+            });
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            currentIndex = currentIndex > 0 ? currentIndex - 1 : indicators.length - 1;
+            updateCarousel();
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentIndex = currentIndex < indicators.length - 1 ? currentIndex + 1 : 0;
+            updateCarousel();
+        });
+        
+        indicators.forEach((indicator, i) => {
+            indicator.addEventListener('click', () => {
+                currentIndex = i;
+                updateCarousel();
+            });
+        });
+    </script>
+</body>
+</html>
