@@ -658,12 +658,12 @@
         /* Education Section */
         .education-container {
             max-width: 900px;
-            margin: 0 auto;
+            margin: 0 20px;
         }
         
         .education-item {
             background: var(--card-bg);
-            padding: 2rem;
+            padding: 1rem;
             border-radius: 15px;
             margin-bottom: 2rem;
             display: flex;
@@ -993,6 +993,41 @@
                 padding: 1rem 1rem;
             }
         }
+        .about-flex-3col {
+            display: flex;
+            gap: 2.0rem;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+        .about-flex-3col .about-image {
+            flex: 0 0 25%;
+            max-width: 25%;
+            min-width: 180px;
+        }
+        .about-flex-3col .about-content {
+            flex: 0 0 30%;
+            max-width: 30%;
+            min-width: 220px;
+        }
+        .about-flex-3col .about-edu-card {
+            flex: 0 0 30%;
+            max-width: 30%;
+            min-width: 220px;
+        }
+        @media (max-width: 900px) {
+            .about-flex-3col {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .about-flex-3col .about-image,
+            .about-flex-3col .about-content,
+            .about-flex-3col .about-edu-card {
+                max-width: 100%;
+                flex: 1 1 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1009,8 +1044,7 @@
             <a href="#experience">工作經歷</a>
             <a href="#portfolio">作品集</a>
             <a href="#featured-projects">競賽獲獎</a>
-            <a href="#education">學歷</a>
-            <a href="#contact">聯絡我</a>
+             <a href="#contact">聯絡我</a>
         </div>
         <div class="mobile-menu" id="mobileMenu">
             <i class="fas fa-bars"></i>
@@ -1056,7 +1090,7 @@
     <!-- About Section -->
     <section id="about">
         <h2 class="section-title fade-in">關於我</h2>
-        <div class="about-container">
+        <div class="about-container about-flex-3col">
             <div class="about-image fade-in">
                 <img src="images/profile.jpg" alt="Bo-Chun Wen" style="width:100%;object-fit:cover;">
             </div>
@@ -1064,6 +1098,36 @@
                 <p class="about-text">我是溫柏淳，一位結合 AI、數據技術、系統分析與使用者經驗設計的產品規劃與專案管理師。</p>
                 <p class="about-text">具備醫療、金融、政府、製造等多領域跨界實戰經驗，專精於將前沿技術轉化為實際可落地的產品與系統解決方案。</p>
                 <p class="about-text">在專案推進中強調以敏捷思維結合Vibe Coding快速迭代，並致力於提升團隊效率、客戶滿意度與產品影響力。</p>
+            </div>
+            <div class="education-container fade-in about-edu-card">
+                <div class="education-item">
+                    <div class="education-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-details">
+                        <div class="education-school">國立中正大學</div>
+                        <div class="education-degree">資訊管理研究所</div>
+                        <div class="education-period">2017 – 2019</div>
+                        <div class="education-more">
+                            <p><i class="fas fa-award"></i> GPA 4.18 / 4.3（系排名第6）</p>
+                            <p><i class="fas fa-file-alt"></i> 論文：GIS結合機器學習於YouBike租賃站缺車預測</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-logo">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-details">
+                        <div class="education-school">逢甲大學</div>
+                        <div class="education-degree">都市計畫與空間資訊學系 空間資訊組</div>
+                        <div class="education-period">2010 – 2014</div>
+                        <div class="education-more">
+                            <p><i class="fas fa-award"></i> Grade Point Average：3.8 / 4.0</p>
+                            <p><i class="fas fa-trophy"></i> 系排名：1</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1354,7 +1418,8 @@
                         <div class="award-badge">交通部公路局傑出獎</div>
                     </div>
                     <div class="project-details">
-                        <h3 class="project-title">AI即時路況解碼與智慧緩解時間預測系統</h3>
+                        <h3 class="project-title">
+                            交通部公路局第一屆資料創新應用競賽 - AI即時路況解碼與智慧緩解時間預測系統</h3>
                         <div class="project-meta">
                             <div class="meta-item">
                                 <i class="fas fa-trophy"></i>
@@ -1389,6 +1454,10 @@
                             </ul>
                         </div>
                         <div class="project-links">
+                            <a href=" https://bochunwen810802.github.io/114_Road/" class="project-link" target="_blank">
+                                <i class="fas fa-link"></i>
+                                <span>事故即時狀態儀表板MVP</span>
+                            </a>                        
                             <a href="https://www.cna.com.tw/postwrite/chi/400151" class="project-link" target="_blank">
                                 <i class="fas fa-link"></i>
                                 <span>新聞稿連結</span>
@@ -1403,11 +1472,11 @@
                         <div class="award-badge">高速公路局優勝</div>
                     </div>
                     <div class="project-details">
-                        <h3 class="project-title">國道智慧交通管理與壅塞預測系統</h3>
+                        <h3 class="project-title"> 113 年國道智慧交通管理創意競賽 - 國道智慧交通管理與壅塞預測系統</h3>
                         <div class="project-meta">
                             <div class="meta-item">
                                 <i class="fas fa-trophy"></i>
-                                <span>優勝獎</span>
+                                <span>優勝獎（第二名）</span>
                             </div>
                             <div class="meta-item">
                                 <i class="fas fa-chart-line"></i>
@@ -1436,15 +1505,7 @@
                 </div>
             </div>
             
-            <div class="carousel-nav">
-                <button class="nav-btn" id="prevBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="nav-btn" id="nextBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
+                       
             <div class="carousel-indicators" id="indicators">
                 <div class="indicator active" data-index="0"></div>
                 <div class="indicator" data-index="1"></div>
@@ -1453,40 +1514,7 @@
     </section>
     
     <!-- Education Section -->
-    <section id="education">
-        <h2 class="section-title fade-in">學歷</h2>
-        <div class="education-container">
-            <div class="education-item fade-in">
-                <div class="education-logo">
-                    <i class="fas fa-university"></i>
-                </div>
-                <div class="education-details">
-                    <div class="education-school">國立中正大學</div>
-                    <div class="education-degree">資訊管理研究所</div>
-                    <div class="education-period">2017 – 2019</div>
-                    <div class="education-more">
-                        <p><i class="fas fa-award"></i> GPA 4.18 / 4.3（系排名第6）</p>
-                        <p><i class="fas fa-file-alt"></i> 論文：GIS結合機器學習於YouBike租賃站缺車預測</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="education-item fade-in">
-                <div class="education-logo">
-                    <i class="fas fa-university"></i>
-                </div>
-                <div class="education-details">
-                    <div class="education-school">逢甲大學</div>
-                    <div class="education-degree">都市計畫與空間資訊學系 空間資訊組</div>
-                    <div class="education-period">2010 – 2014</div>
-                    <div class="education-more">
-                        <p><i class="fas fa-award"></i> Grade Point Average：3.8 / 4.0</p>
-                        <p><i class="fas fa-trophy"></i> 系排名：1</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
     
     <!-- Contact Section -->
     <section id="contact">
