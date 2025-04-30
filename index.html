@@ -246,7 +246,7 @@
         
         /* About Section */
         section {
-            padding: 6rem 5%;
+            padding: 1rem 5%;
             border-bottom: 1px solid var(--border-color);
         }
         
@@ -665,7 +665,7 @@
             background: var(--card-bg);
             padding: 1rem;
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 0.2rem;
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
@@ -695,6 +695,14 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .education-school i {
+            font-size: 1.2rem;
             color: var(--dark-gray);
         }
         
@@ -1012,8 +1020,8 @@
             min-width: 220px;
         }
         .about-flex-3col .about-edu-card {
-            flex: 0 0 30%;
-            max-width: 30%;
+            flex: 0 0 33%;
+            max-width: 31%;
             min-width: 220px;
         }
         @media (max-width: 900px) {
@@ -1101,25 +1109,25 @@
             </div>
             <div class="education-container fade-in about-edu-card">
                 <div class="education-item">
-                    <div class="education-logo">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="education-details">
-                        <div class="education-school">國立中正大學</div>
+                                        <div class="education-details">
+                        <div class="education-school">
+                            <i class="fas fa-university"></i>
+                            國立中正大學
+                        </div>
                         <div class="education-degree">資訊管理研究所</div>
                         <div class="education-period">2017 – 2019</div>
                         <div class="education-more">
                             <p><i class="fas fa-award"></i> GPA 4.18 / 4.3（系排名第6）</p>
-                            <p><i class="fas fa-file-alt"></i> 論文：GIS結合機器學習於YouBike租賃站缺車預測</p>
+                            <p><i class="fas fa-file-alt"></i> 論文：結合地理資訊系統與機器學習於公共自行車租賃站缺車預測—以臺北市YouBike為例</p>
                         </div>
                     </div>
                 </div>
                 <div class="education-item">
-                    <div class="education-logo">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="education-details">
-                        <div class="education-school">逢甲大學</div>
+                        <div class="education-details">
+                        <div class="education-school">
+                            <i class="fas fa-university"></i>
+                            逢甲大學
+                        </div>
                         <div class="education-degree">都市計畫與空間資訊學系 空間資訊組</div>
                         <div class="education-period">2010 – 2014</div>
                         <div class="education-more">
