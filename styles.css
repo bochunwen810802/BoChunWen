@@ -1033,4 +1033,46 @@ footer {
         max-width: 100%;
         flex: 1 1 100%;
     }
+}
+
+/* 角色標籤樣式 */
+.role-tags {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0;
+    flex-wrap: wrap;
+}
+
+.role-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.role-tag.pm {
+    background-color: #2c5282;
+    box-shadow: 0 2px 4px rgba(44, 82, 130, 0.2);
+}
+
+.role-tag.sa {
+    background-color: #805ad5;
+    box-shadow: 0 2px 4px rgba(128, 90, 213, 0.2);
+}
+
+.role-tag.ux {
+    background-color: #553c9a;
+    box-shadow: 0 2px 4px rgba(85, 60, 154, 0.2);
+}
+
+.role-tag.pg {
+    background-color: #2c7a7b;
+    box-shadow: 0 2px 4px rgba(44, 122, 123, 0.2);
+}
+
+.role-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 } 
