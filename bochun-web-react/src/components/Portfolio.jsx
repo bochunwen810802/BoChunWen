@@ -102,9 +102,18 @@ const Portfolio = () => {
     { key: 'product', label: '產品' }
   ]
 
-  const filteredItems = activeFilter === 'all' 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeFilter)
+  // 優化篩選邏輯
+  const filteredItems = React.useMemo(() => {
+    if (activeFilter === 'all') {
+      return portfolioItems
+    }
+    return portfolioItems.filter(item => item.category === activeFilter)
+  }, [activeFilter])
+
+  const handleFilterClick = (filterKey) => {
+    console.log('Filter clicked:', filterKey) // 調試信息
+    setActiveFilter(filterKey)
+  }
 
   const getRoleTagClass = (role) => {
     switch(role) {
@@ -115,6 +124,10 @@ const Portfolio = () => {
     }
   }
 
+  // 調試信息
+  console.log('Current activeFilter:', activeFilter)
+  console.log('Filtered items count:', filteredItems.length)
+
   return (
     <section id="portfolio">
       <h2 className="section-title fade-in">作品集</h2>
@@ -124,7 +137,7 @@ const Portfolio = () => {
             <button
               key={filter.key}
               className={`filter-btn ${activeFilter === filter.key ? 'active' : ''}`}
-              onClick={() => setActiveFilter(filter.key)}
+              onClick={() => handleFilterClick(filter.key)}
             >
               {filter.label}
             </button>
