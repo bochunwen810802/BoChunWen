@@ -32,6 +32,13 @@ const Contact = () => {
       color: '#0077B5'
     },
     {
+      href: 'https://line.me/ti/p/~zz0802',
+      icon: 'fab fa-line',
+      text: 'Line',
+      description: 'ID: zz0802',
+      color: '#00C300'
+    },
+    {
       href: 'https://github.com/bochunwen810802',
       icon: 'fab fa-github',
       text: 'GitHub',
@@ -78,6 +85,9 @@ const Contact = () => {
             <a href="https://linkedin.com/in/bochunwen" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <i className="fab fa-linkedin"></i>
             </a>
+            <a href="https://line.me/ti/p/~zz0802" target="_blank" rel="noopener noreferrer" aria-label="Line">
+              <i className="fab fa-line"></i>
+            </a>
             <a href="https://github.com/bochunwen810802" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <i className="fab fa-github"></i>
             </a>
@@ -88,4 +98,4 @@ const Contact = () => {
   )
 }
 
-export default Contact 
+export default Contact
