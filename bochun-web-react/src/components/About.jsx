@@ -21,7 +21,7 @@ const About = () => {
       <h2 className="section-title fade-in">關於我</h2>
       <div className="about-container about-flex-3col">
         <div className="about-image fade-in">
-          <img src="/images/profile.jpg" alt="Bo-Chun Wen" style={{width:'100%', objectFit:'cover'}} />
+          <img src="/profile.jpg" alt="Bo-Chun Wen" style={{width:'100%', objectFit:'cover'}} />
         </div>
         <div className="about-content fade-in">
           <p className="about-text">我是溫柏淳，一位結合 AI、數據技術、系統分析與使用者經驗設計的產品規劃與專案管理師。</p>
