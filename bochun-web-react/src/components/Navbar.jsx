@@ -26,7 +26,7 @@ const Navbar = () => {
         <a href="#about">關於我</a>
         <a href="#skills">技能</a>
         <a href="#experience">工作經歷</a>
-        <a href="#portfolio">作品集</a>
+        <a href="#portfolio">專案經歷</a>
         <a href="#featured-projects">競賽獲獎</a>
         <a href="#contact">聯絡我</a>
       </div>

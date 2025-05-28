@@ -130,7 +130,7 @@ const Portfolio = () => {
 
   return (
     <section id="portfolio">
-      <h2 className="section-title fade-in">作品集</h2>
+      <h2 className="section-title fade-in">專案經歷</h2>
       <div className="portfolio-container">
         <div className="portfolio-filters fade-in">
           {filters.map(filter => (
